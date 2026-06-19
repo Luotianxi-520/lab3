@@ -61,6 +61,22 @@ python -m venv .venv
 | 21 | test_stats_empty | 空数据统计 |
 | 22 | test_stats_with_mixed_tasks | 混合状态统计 |
 
+## 需求—测试用例对应表
+
+| 需求（用户故事） | 对应测试用例 |
+|-----------------|-------------|
+| US1: 记录实验报告截止日期 | `test_add_task_success`, `test_id_auto_increment` |
+| US2: 查看所有待办任务 | `test_list_empty`, `test_list_with_tasks` |
+| US3: 标记任务为完成 | `test_done_existing_task`, `test_done_nonexistent_task`, `test_done_already_done_task` |
+| US4: 任务有唯一编号 | `test_id_auto_increment`, `test_id_no_reuse_after_delete` |
+| US5: 数据持久化不丢失 | `test_persistence_round_trip`, `test_save_and_load_tasks` |
+| US6: 删除任务 | `test_delete_existing_task`, `test_delete_nonexistent_task` |
+| US7: 搜索任务 | `test_search_exact_match`, `test_search_case_insensitive`, `test_search_no_match` |
+| US8: 统计信息 | `test_stats_empty`, `test_stats_with_mixed_tasks` |
+| 边界: 空标题校验 | `test_add_task_empty_title`, `test_add_task_whitespace_title` |
+| 边界: 损坏文件容错 | `test_load_corrupt_json` |
+| 边界: 文件自动创建 | `test_load_tasks_file_not_exists`, `test_save_tasks_creates_file` |
+
 ## Bug 修复流程
 
 按要求"先引入 bug → 测试失败 → 修复 → 重测通过"：
